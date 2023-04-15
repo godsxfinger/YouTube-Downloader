@@ -21,10 +21,12 @@ python downloader.py
 - - - -
 
 ### Features:
-- [x] You can now download a entire playlist.
+- [x] Download's entire playlist.
+- [x] Choose between MP3 or WAV file format.
 - - - -
 
 ### Changelog:
 #### Update 1.0 (15/04/2023)
 * Rewritten the code.
 * Added a function to download a playlist.
+* Added a function to choose between MP3 or WAV file format.
