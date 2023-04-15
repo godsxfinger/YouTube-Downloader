@@ -9,6 +9,7 @@ __Create requirements.txt with following code:__
 pytube==11.0.2
 requests==2.26.0
 tqdm==4.62.2
+colorama
 ```
 __Install the libraries with :__
 ```
