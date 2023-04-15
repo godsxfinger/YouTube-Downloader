@@ -1,4 +1,4 @@
-# YouTube-Audio-Downloader
+# YouTube-Downloader
 __A simple script to download audio from any YouTube Video.__
 - - - -
 
