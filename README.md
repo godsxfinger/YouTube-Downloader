@@ -6,9 +6,9 @@ __A simple script to download audio from any YouTube Video.__
 __Create requirements.txt with following code:__
 
 ```
-pytube==11.0.2
-requests==2.26.0
-tqdm==4.62.2
+pytube
+requests
+tqdm
 colorama
 ```
 __Install the libraries with :__
