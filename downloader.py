@@ -13,14 +13,16 @@ def download_audio(url):
 
         # get the file name and extension based on user choice
         file_name = yt.title
-        audio_format = input("Enter audio format (mp3 or wav): ")
-        if audio_format == 'mp3':
-            file_ext = '.mp3'
-        elif audio_format == 'wav':
-            file_ext = '.wav'
-        else:
-            print("Invalid audio format. Please enter mp3 or wav.")
-            return
+        while True:
+            audio_format = input("Enter audio format (mp3 or wav): ")
+            if audio_format == 'mp3':
+                file_ext = '.mp3'
+                break
+            elif audio_format == 'wav':
+                file_ext = '.wav'
+                break
+            else:
+                print("Invalid audio format. Please enter mp3 or wav.")
         file_name += file_ext
 
         # create the downloads directory if it does not exist
@@ -64,21 +66,23 @@ while True:
         print("2. Download all audio files from a playlist")
         choice = input("Enter your choice (1 or 2): ")
         if choice == '1':
-            url = input("Enter the YouTube video URL: ")
-            if "youtube.com" in url.lower() and urlparse(url).scheme in ["http", "https"]:
-                download_audio(url)
-                input("\nPress Enter to continue...")
-            else:
-                print("Invalid YouTube URL. Please enter a valid YouTube URL.")
-                input("\nPress Enter to continue...")
+            while True:
+                url = input("Enter the YouTube video URL: ")
+                if "youtube.com" in url.lower() and urlparse(url).scheme in ["http", "https"]:
+                    break
+                else:
+                    print("Invalid YouTube URL. Please enter a valid YouTube URL.")
+            download_audio(url)
+            input("\nPress Enter to continue...")
         elif choice == '2':
-            url = input("Enter the YouTube playlist URL: ")
-            if "youtube.com" in url.lower() and urlparse(url).scheme in ["http", "https"]:
-                download_playlist(url)
-                input("\nPress Enter to continue...")
-            else:
-                print("Invalid YouTube URL. Please enter a valid YouTube URL.")
-                input("\nPress Enter to continue...")
+            while True:
+                url = input("Enter the YouTube playlist URL: ")
+                if "youtube.com" in url.lower() and urlparse(url).scheme in ["http", "https"]:
+                    break
+                else:
+                    print("Invalid YouTube URL. Please enter a valid YouTube URL.")
+            download_playlist(url)
+            input("\nPress Enter to continue...")
         else:
             print("Invalid choice. Please enter '1' or '2'.")
             input("\nPress Enter to continue...")
