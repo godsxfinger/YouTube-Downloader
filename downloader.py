@@ -11,22 +11,26 @@ def download_audio(url):
         yt = pytube.YouTube(url)
         audio_stream = yt.streams.filter(only_audio=True).first()
 
-        # get the file name
-        file_name = yt.title + '.mp3'
+        # get the file name and extension based on user choice
+        file_name = yt.title
+        audio_format = input("Enter audio format (mp3 or wav): ")
+        if audio_format == 'mp3':
+            file_ext = '.mp3'
+        elif audio_format == 'wav':
+            file_ext = '.wav'
+        else:
+            print("Invalid audio format. Please enter mp3 or wav.")
+            return
+        file_name += file_ext
 
         # create the downloads directory if it does not exist
         if not os.path.exists('downloads'):
             os.makedirs('downloads')
 
-        # check if the file already exists
-        filepath = os.path.join('downloads', file_name)
-        if os.path.exists(filepath):
-            print("The file", file_name, "already exists.")
-            return
-
         # download the audio stream and show the progress bar
         response = requests.get(audio_stream.url, stream=True)
         response.raise_for_status()
+        filepath = os.path.join('downloads', file_name)
         with open(filepath, 'wb') as f:
             total_size = int(response.headers.get('content-length', 0))
             progress_bar = tqdm(total=total_size, unit='B', unit_scale=True)
