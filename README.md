@@ -2,7 +2,7 @@
 __A simple script to download audio from any YouTube Video.__
 - - - -
 
-## How to use
+## Usage:
 __Create requirements.txt with following code:__
 
 ```
@@ -20,11 +20,11 @@ python downloader.py
 ```
 - - - -
 
-### Features :
+### Features:
 - [x] You can now download a entire playlist.
 - - - -
 
-#### Changelog
+### Changelog:
 #### Update 1.0 (15/04/2023)
 * Rewritten the code.
 * Added a function to download a playlist.
