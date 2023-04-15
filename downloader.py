@@ -2,6 +2,7 @@ import os
 import pytube
 import requests
 from tqdm import tqdm
+from urllib.parse import urlparse
 
 # function to download a single audio file
 def download_audio(url):
@@ -45,21 +46,35 @@ def download_playlist(url):
 
 # main program loop
 while True:
-    print("\n============================")
-    print(" YouTube Audio Downloader")
-    print("============================")
-    print("1. Download a single audio file")
-    print("2. Download all audio files from a playlist")
-    choice = input("Enter your choice (1 or 2): ")
-    if choice == '1':
-        url = input("Enter the YouTube video URL: ")
-        download_audio(url)
+    try:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("\n============================")
+        print(" YouTube Audio Downloader")
+        print("============================")
+        print("1. Download a single audio file")
+        print("2. Download all audio files from a playlist")
+        choice = input("Enter your choice (1 or 2): ")
+        if choice == '1':
+            url = input("Enter the YouTube video URL: ")
+            if "youtube.com" in url.lower() and urlparse(url).scheme in ["http", "https"]:
+                download_audio(url)
+                input("\nPress Enter to continue...")
+            else:
+                print("Invalid YouTube URL. Please enter a valid YouTube URL.")
+                input("\nPress Enter to continue...")
+        elif choice == '2':
+            url = input("Enter the YouTube playlist URL: ")
+            if "youtube.com" in url.lower() and urlparse(url).scheme in ["http", "https"]:
+                download_playlist(url)
+                input("\nPress Enter to continue...")
+            else:
+                print("Invalid YouTube URL. Please enter a valid YouTube URL.")
+                input("\nPress Enter to continue...")
+        else:
+            print("Invalid choice. Please enter '1' or '2'.")
+            input("\nPress Enter to continue...")
+    except KeyboardInterrupt:
+        print("\nProgram canceled by user.")
         break
-    elif choice == '2':
-        url = input("Enter the YouTube playlist URL: ")
-        download_playlist(url)
-        break
-    else:
-        print("Invalid choice. Please enter '1' or '2'.")
 
 print("\nThank you for using YouTube Audio Downloader!")
